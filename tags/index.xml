@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Blog: A blog about R and other stuff</title>
+    <title>Tags on Welcome</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on Blog: A blog about R and other stuff</description>
+    <description>Recent content in Tags on Welcome</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Nov 2016 00:00:00 +0000</lastBuildDate>
@@ -35,6 +35,15 @@
       <pubDate>Tue, 20 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/climate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Economics</title>
+      <link>/tags/economics/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/economics/</guid>
       <description></description>
     </item>
     
@@ -120,6 +129,15 @@
     </item>
     
     <item>
+      <title>Nyt</title>
+      <link>/tags/nyt/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nyt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Oil</title>
       <link>/tags/oil/</link>
       <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
@@ -185,9 +203,18 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Race</title>
+      <link>/tags/race/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/race/</guid>
       <description></description>
     </item>
     
@@ -197,6 +224,15 @@
       <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/rcpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Re Imagine</title>
+      <link>/tags/re-imagine/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/re-imagine/</guid>
       <description></description>
     </item>
     
@@ -215,6 +251,15 @@
       <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/saudi-arabia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>School</title>
+      <link>/tags/school/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/school/</guid>
       <description></description>
     </item>
     
