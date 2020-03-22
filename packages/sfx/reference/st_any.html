@@ -151,15 +151,16 @@ Default is <code>Inf</code>.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>states_map</span>)
 
 <span class='no'>i</span> <span class='kw'>&lt;-</span> <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_binary_pred.html'>st_intersects</a></span>(<span class='no'>states_map</span>) <span class='kw'>%&gt;%</span>
-
+  <span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_binary_pred.html'>st_intersects</a></span>(<span class='no'>states_map</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='input'>
 <span class='no'>i</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>st_any</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='output co'>#&gt; <span class='error'>Error in i(.): could not find function "i"</span></div><div class='input'>
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'>
 <span class='no'>i</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>st_any</span>(<span class='fl'>3</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'i' not found</span></div><div class='input'>
-</div></pre>
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='no'>j</span> <span class='kw'>&lt;-</span> <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='any_binary_pred.html'>st_any_intersects</a></span>(<span class='no'>states_map</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>j</span>)</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

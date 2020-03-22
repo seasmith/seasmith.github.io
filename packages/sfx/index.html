@@ -71,75 +71,43 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#extra-sf-simple-features-manipulations" class="anchor"></a>Extra ‘sf’ Simple Features manipulations</h1></div>
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sfx)</a>
+<p>See the <a href="http://seasmith.github.io/packages/sfx/reference/index.html">Reference section</a> for detailed examples.</p>
+<p>Function list:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Convert logical matrix to logical vector</span></a>
+<a class="sourceLine" id="cb1-2" title="2">st_any</a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4">nc &lt;-<span class="st"> </span>sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_read.html">read_sf</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"shape/nc.shp"</span>, <span class="dt">package =</span> <span class="st">"sf"</span>))</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(ngp, <span class="dt">package =</span> <span class="st">"sfx"</span>)</a></code></pre></div>
-<p>The <code>sfx::st_any_*()</code> functions return a logical vector which may be used in <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> (and possibly <code>[.data.table</code>).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(ngp)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co">## [1] 33642</span></a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co"># Filter rows that intersect with nc</span></a>
-<a class="sourceLine" id="cb2-5" title="5">ngp <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="kw"><a href="reference/any_binary_pred.html">st_any_intersects</a></span>(ngp, nc)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>()</a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">## CRS of 'y' does not match 'x'.</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">## Setting CRS of 'y' to match 'x'.</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">## 4326+proj=longlat +datum=WGS84 +no_defs</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">## although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">## [1] 100</span></a></code></pre></div>
-<p>The <code>sfx::st_*_join()</code> functions mimic the <code>dplyr</code> equivalents and some are just wrappers around <code><a href="https://rdrr.io/pkg/sf/man/st_join.html">sf::st_join()</a></code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">ngp <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span>sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_transform.html">st_transform</a></span>(sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_crs.html">st_crs</a></span>(nc)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/st_joins.html">st_semi_join</a></span>(nc)</a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">## although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">## Simple feature collection with 100 features and 5 fields</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">## geometry type:  MULTILINESTRING</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">## dimension:      XY</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">## bbox:           xmin: -82.91061 ymin: 34.87358 xmax: -77.0256 ymax: 36.99636</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">## epsg (SRID):    4267</span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">## proj4string:    +proj=longlat +datum=NAD27 +no_defs</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">## # A tibble: 100 x 6</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">##      FID TYPEPIPE Operator Shape_Leng Shape__Length</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">##  * &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">##  1  1904 Intrast~ Cardina~     1.29         149065.</span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">##  2  2753 Interst~ Columbi~     0.0962        13218.</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">##  3  4635 Interst~ East Te~     0.0710         8924.</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">##  4  4636 Interst~ East Te~     1.34         156090.</span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="co">##  5  3849 Interst~ Columbi~     0.0539         7373.</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">##  6  3850 Interst~ Columbi~     0.0962        13218.</span></a>
-<a class="sourceLine" id="cb3-20" title="20"><span class="co">##  7 27590 Interst~ Transco~     0.133         15471.</span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">##  8 27591 Interst~ Transco~     0.414         48610.</span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">##  9 27592 Interst~ Transco~     0.0686         8114.</span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">## 10 27594 Interst~ Transco~     0.0950        13093.</span></a>
-<a class="sourceLine" id="cb3-24" title="24"><span class="co">## # ... with 90 more rows, and 1 more variable: geometry &lt;MULTILINESTRING</span></a>
-<a class="sourceLine" id="cb3-25" title="25"><span class="co">## #   [°]&gt;</span></a></code></pre></div>
-<p>The <code>sfx::st_ul_*()</code> functions provide unitless equivalents of the <code>sf</code> functions.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># st_area would error in this case.</span></a>
-<a class="sourceLine" id="cb4-2" title="2">nc <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="kw"><a href="reference/unitless_measures.html">st_ul_area</a></span>(nc) <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e9</span>)</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co">## Simple feature collection with 66 features and 14 fields</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="co">## geometry type:  MULTIPOLYGON</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="co">## dimension:      XY</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co">## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.7637 ymax: 36.58965</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="co">## epsg (SRID):    4267</span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="co">## proj4string:    +proj=longlat +datum=NAD27 +no_defs</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="co">## # A tibble: 66 x 15</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co">##     AREA PERIMETER CNTY_ CNTY_ID NAME  FIPS  FIPSNO CRESS_ID BIR74 SID74</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="co">##  * &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-13" title="13"><span class="co">##  1 0.114      1.44  1825    1825 Ashe  37009  37009        5  1091     1</span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="co">##  2 0.143      1.63  1828    1828 Surry 37171  37171       86  3188     5</span></a>
-<a class="sourceLine" id="cb4-15" title="15"><span class="co">##  3 0.153      2.21  1832    1832 Nort~ 37131  37131       66  1421     9</span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="co">##  4 0.118      1.42  1836    1836 Warr~ 37185  37185       93   968     4</span></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="co">##  5 0.124      1.43  1837    1837 Stok~ 37169  37169       85  1612     1</span></a>
-<a class="sourceLine" id="cb4-18" title="18"><span class="co">##  6 0.114      1.35  1838    1838 Casw~ 37033  37033       17  1035     2</span></a>
-<a class="sourceLine" id="cb4-19" title="19"><span class="co">##  7 0.153      1.62  1839    1839 Rock~ 37157  37157       79  4449    16</span></a>
-<a class="sourceLine" id="cb4-20" title="20"><span class="co">##  8 0.143      1.66  1840    1840 Gran~ 37077  37077       39  1671     4</span></a>
-<a class="sourceLine" id="cb4-21" title="21"><span class="co">##  9 0.109      1.32  1841    1841 Pers~ 37145  37145       73  1556     4</span></a>
-<a class="sourceLine" id="cb4-22" title="22"><span class="co">## 10 0.19       2.20  1846    1846 Hali~ 37083  37083       42  3608    18</span></a>
-<a class="sourceLine" id="cb4-23" title="23"><span class="co">## # ... with 56 more rows, and 5 more variables: NWBIR74 &lt;dbl&gt;, BIR79 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-24" title="24"><span class="co">## #   SID79 &lt;dbl&gt;, NWBIR79 &lt;dbl&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># Binary logical helpers</span></a>
+<a class="sourceLine" id="cb1-5" title="5">st_any_contains</a>
+<a class="sourceLine" id="cb1-6" title="6">st_any_contains_properly</a>
+<a class="sourceLine" id="cb1-7" title="7">st_any_covered_by</a>
+<a class="sourceLine" id="cb1-8" title="8">st_any_covers</a>
+<a class="sourceLine" id="cb1-9" title="9">st_any_crosses</a>
+<a class="sourceLine" id="cb1-10" title="10">st_any_disjoint</a>
+<a class="sourceLine" id="cb1-11" title="11">st_any_equals</a>
+<a class="sourceLine" id="cb1-12" title="12">st_any_equals_exact</a>
+<a class="sourceLine" id="cb1-13" title="13">st_any_intersects</a>
+<a class="sourceLine" id="cb1-14" title="14">st_any_is_within_distance</a>
+<a class="sourceLine" id="cb1-15" title="15">st_any_overlaps</a>
+<a class="sourceLine" id="cb1-16" title="16">st_any_touches</a>
+<a class="sourceLine" id="cb1-17" title="17">st_any_within</a>
+<a class="sourceLine" id="cb1-18" title="18"></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co"># Joins</span></a>
+<a class="sourceLine" id="cb1-20" title="20">st_inner_join</a>
+<a class="sourceLine" id="cb1-21" title="21">st_left_join</a>
+<a class="sourceLine" id="cb1-22" title="22">st_anti_join</a>
+<a class="sourceLine" id="cb1-23" title="23">st_semi_join</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="co"># Unitless dimensions</span></a>
+<a class="sourceLine" id="cb1-26" title="26">st_ul_area</a>
+<a class="sourceLine" id="cb1-27" title="27">st_ul_distance</a>
+<a class="sourceLine" id="cb1-28" title="28">st_ul_length</a>
+<a class="sourceLine" id="cb1-29" title="29"></a>
+<a class="sourceLine" id="cb1-30" title="30"><span class="co"># Bounding-box helpers</span></a>
+<a class="sourceLine" id="cb1-31" title="31">st_extent</a>
+<a class="sourceLine" id="cb1-32" title="32">st_xdist</a>
+<a class="sourceLine" id="cb1-33" title="33">st_ydist</a>
+<a class="sourceLine" id="cb1-34" title="34">st_xlim</a>
+<a class="sourceLine" id="cb1-35" title="35">st_ylim</a></code></pre></div>
 </div>
   </div>
 

@@ -153,6 +153,11 @@
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>states_map</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>tx_extent</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='img'><img src='st_extent-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>states_map</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='st_joins.html'>st_anti_join</a></span>(<span class='no'>tx_extent</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>tx_extent</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='img'><img src='st_extent-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
