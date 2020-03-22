@@ -6,10 +6,44 @@
     <description>Recent content on Welcome</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Canada: A Major Oil Import Source For The US</title>
+      <link>/blog/canada_a_major_import_source_for_the_us/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/canada_a_major_import_source_for_the_us/</guid>
+      <description>Last year, my exploration into US imports of Canadian oil revealed both Canada’s dominance and growth as an import source.
+One year later, Canada remains the top source of US oil imports and is poised to continue to grow its market share.
+Canadian oil makes up nearly a majority of US oil imports in 2018, at 47% of all imports.
+In May 2018, the US imported 3.</description>
+    </item>
+    
+    <item>
+      <title>Choosing the Right Center of Projection For Your Map</title>
+      <link>/blog/choosing_the_right_center_of_projection/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/choosing_the_right_center_of_projection/</guid>
+      <description>The following map of Georgia comes from the Washington Posts’ coverage of the 2018 primary elections.
+These kinds of maps - where the center of projection is not based on the feature being mapped - are seen quite often in the Washington Post, New York Times, and other major US news publishers.
+The map at hand shows the state of Georgia - tilted to the left, as though rotated counter-clockwise about its center.</description>
+    </item>
+    
+    <item>
+      <title>What The 2018 Children At Risk Data Reveals About Houston Area Schools</title>
+      <link>/blog/houston_school_rankings_2018_1/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/houston_school_rankings_2018_1/</guid>
+      <description>The 2018 Children At Risk data reveals a startlingly trend: the declining quality of Houston area school districts.
+The 20 largest Houston area school districts enroll nearly 1 million students – representing 81% of all Houston area enrolled students.
+Since 2015, only 3 of the 20 largest districts have shown signs of improvement. That is according to the Children At Risk’s C@R school grade – a measure of overall school quality.</description>
+    </item>
     
     <item>
       <title>2018 Children At Risk Data: Graduation Rates</title>
@@ -22,40 +56,6 @@ Among independent school districts, rural districts possess the lowest and highe
 Hardin ISD graduated an estimated 69.6% of its students while Danbury ISD graduated an estimated 96.2%.
 There is also a very clear correlation with the Children At Risk’s grade ranking and graduation rates.
 Outside of a couple outliers in the B+ and A grade, schools receiving a grade of F show the widest disparity in graduation rates among the various grades.</description>
-    </item>
-    
-    <item>
-      <title>Canada: A Major Oil Import Source For The US</title>
-      <link>/blog/canada_a_major_import_source_for_the_us/</link>
-      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/canada_a_major_import_source_for_the_us/</guid>
-      <description>Last year, my exploration into US imports of Canadian oil revealed both Canada’s dominance and growth as an import source.
-One year later, Canada remains the top source of US oil imports and is poised to continue to grow its market share.
-Canadian oil makes up nearly a majority of US oil imports in 2018, at 47% of all imports.
-In May 2018, the US imported 3.</description>
-    </item>
-    
-    <item>
-      <title>What The 2018 Children At Risk Data Reveals About Houston Area Schools</title>
-      <link>/blog/houston_school_rankings_2018_1/</link>
-      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/houston_school_rankings_2018_1/</guid>
-      <description>The 2018 Children At Risk data reveals a startlingly trend: the declining quality of Houston area school districts.
-The 20 largest Houston area school districts enroll nearly 1 million students – representing 81% of all Houston area enrolled students.
-Since 2015, only 3 of the 20 largest districts have shown signs of improvement. That is according to the Children At Risk’s C@R school grade – a measure of overall school quality.</description>
-    </item>
-    
-    <item>
-      <title>Choosing the Right Center of Projection For Your Map</title>
-      <link>/blog/choosing_the_right_center_of_projection/</link>
-      <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/choosing_the_right_center_of_projection/</guid>
-      <description>The following map of Georgia comes from the Washington Posts’ coverage of the 2018 primary elections.
-These kinds of maps - where the center of projection is not based on the feature being mapped - are seen quite often in the Washington Post, New York Times, and other major US news publishers.
-The map at hand shows the state of Georgia - tilted to the left, as though rotated counter-clockwise about its center.</description>
     </item>
     
     <item>
@@ -225,9 +225,7 @@ Some quick tipsNested lists or lists of ggplot2 plots can have features added 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>Relative new-comer to R (and statistics).
-Find out more about me from my resume, if you’d like.
-Check me out on Twitter and GitHub.</description>
+      <description>Resume.TwitterGitHub</description>
     </item>
     
     <item>
@@ -236,7 +234,7 @@ Check me out on Twitter and GitHub.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/packages/</guid>
-      <description>PackageDescriptionAlignRegexAlign characters in a script using regular expressions. A port of AlignAssign.AlignAssignAlign the assignment operators in a scriptblgPersonal package of utility functions used for bloggingseasmithPersonal package of miscellaneous utility functionsggloopCreate multiple charts using non-standard evaluation</description>
+      <description>PackageDescriptionAlignRegexAlign characters in a script using regular expressions. A port of AlignAssign.AlignAssignAlign the assignment operators in a scriptsfxExtra functions for ’sfx Simple Features in RblgPersonal package of utility functions used for bloggingseasmithPersonal package of miscellaneous utility functionsggloopCreate multiple charts using non-standard evaluation</description>
     </item>
     
     <item>
@@ -245,7 +243,7 @@ Check me out on Twitter and GitHub.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/</guid>
-      <description>ProjectDescriptionUS Rig Count UpdateWeekly tweets of new rig count data.Houston Crime Viewer (shiny app)An interactive map of Houston crime data. Built with R packages: shiny and leaflet.D3 GraphicsMy D3.js creations…and some Vega and Vega-Lite.TexasPrimary2016Analysis of the 2016 Texas Presidential Primary.</description>
+      <description>ProjectDescriptionUS Rig Count UpdateWeekly tweets of new rig count data. [discontinued]Houston Crime Viewer (shiny app)An interactive map of Houston crime data. Built with R packages: shiny and leaflet.D3 GraphicsMy D3.js creations…and some Vega and Vega-Lite.TexasPrimary2016Analysis of the 2016 Texas Presidential Primary. [incompleted]</description>
     </item>
     
   </channel>
