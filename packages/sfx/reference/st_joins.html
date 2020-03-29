@@ -147,7 +147,7 @@ logical <code>!</code> where appropriate).</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>arguments passed on to the <code>join</code> function (e.g. <code>prepared</code>, or a pattern for <a href='https://rdrr.io/pkg/sf/man/st_relate.html'>st_relate</a>)</p></td>
+      <td><p>arguments passed on to the <code>join</code> or <code>.predicate</code> function, e.g. <code>prepared</code>, or a pattern for <a href='https://rdrr.io/pkg/sf/man/st_relate.html'>st_relate</a></p></td>
     </tr>
     <tr>
       <th>join</th>
@@ -157,9 +157,9 @@ logical <code>!</code> where appropriate).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>))
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>states_map</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ngp</span>)
 
@@ -188,26 +188,25 @@ logical <code>!</code> where appropriate).</p>
         <span class='fu'>show_map</span>()</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='img'><img src='st_joins-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># [Inner-join] Intersects (Default)</span>
 <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>st_inner_join</span>(<span class='no'>tx</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='output co'>#&gt; Simple feature collection with 7356 features and 7 fields
+  <span class='fu'>st_inner_join</span>(<span class='no'>tx</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='output co'>#&gt; Simple feature collection with 7354 features and 7 fields
 #&gt; geometry type:  MULTILINESTRING
 #&gt; dimension:      XY
 #&gt; bbox:           xmin: -106.57 ymin: 25.9161 xmax: -90.89331 ymax: 37.5533
-#&gt; epsg (SRID):    4326
-#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs
-#&gt; <span style='color: #555555;'># A tibble: 7,356 x 8</span><span>
-#&gt;      FID TYPEPIPE Operator Shape_Leng Shape__Length                  geometry
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;MULTILINESTRING [°]&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>006 Intrast~ Centana~    0.005</span><span style='text-decoration: underline;'>86</span><span>          746. ((-93.98166 29.87355, -9~
-#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>008 Intrast~ Centana~    0.009</span><span style='text-decoration: underline;'>02</span><span>         </span><span style='text-decoration: underline;'>1</span><span>142. ((-93.98018 29.87922, -9~
-#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>011 Intrast~ Texas I~    0.005</span><span style='text-decoration: underline;'>67</span><span>          631. ((-94.60664 29.66106, -9~
-#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>012 Intrast~ Centana~    0.014</span><span style='text-decoration: underline;'>1</span><span>          </span><span style='text-decoration: underline;'>1</span><span>642. ((-93.98316 29.88773, -9~
-#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>014 Intrast~ Texas I~    0.050</span><span style='text-decoration: underline;'>5</span><span>          </span><span style='text-decoration: underline;'>6</span><span>354. ((-94.58138 29.59862, -9~
-#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>015 Intrast~ Texas I~    0.003</span><span style='text-decoration: underline;'>29</span><span>          367. ((-94.56302 29.55162, -9~
-#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>016 Intrast~ Texas I~    0.004</span><span style='text-decoration: underline;'>26</span><span>          480. ((-94.56302 29.55162, -9~
-#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>017 Intrast~ Texas I~    0.006</span><span style='text-decoration: underline;'>94</span><span>          773. ((-94.5671 29.5504, -94.~
-#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>018 Intrast~ Texas I~    0.039</span><span style='text-decoration: underline;'>6</span><span>          </span><span style='text-decoration: underline;'>4</span><span>440. ((-94.57576 29.66976, -9~
-#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>019 Intrast~ Texas I~    0.014</span><span style='text-decoration: underline;'>4</span><span>          </span><span style='text-decoration: underline;'>1</span><span>801. ((-93.96528 29.93387, -9~
-#&gt; </span><span style='color: #555555;'># ... with 7,346 more rows, and 2 more variables: group </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, region </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+#&gt; CRS:            4326
+#&gt; <span style='color: #555555;'># A tibble: 7,354 x 8</span><span>
+#&gt;      fid typepipe operator shape_leng shape_length                  geometry
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;MULTILINESTRING [°]&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>006 Intrast~ Centana~    0.005</span><span style='text-decoration: underline;'>86</span><span>         746. ((-93.98166 29.87355, -9~
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>008 Intrast~ Centana~    0.009</span><span style='text-decoration: underline;'>02</span><span>        </span><span style='text-decoration: underline;'>1</span><span>142. ((-93.98018 29.87922, -9~
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>011 Intrast~ Texas I~    0.005</span><span style='text-decoration: underline;'>67</span><span>         631. ((-94.60664 29.66106, -9~
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>012 Intrast~ Centana~    0.014</span><span style='text-decoration: underline;'>1</span><span>         </span><span style='text-decoration: underline;'>1</span><span>642. ((-93.98316 29.88773, -9~
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>014 Intrast~ Texas I~    0.050</span><span style='text-decoration: underline;'>5</span><span>         </span><span style='text-decoration: underline;'>6</span><span>354. ((-94.58138 29.59862, -9~
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>015 Intrast~ Texas I~    0.003</span><span style='text-decoration: underline;'>29</span><span>         367. ((-94.56302 29.55162, -9~
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>016 Intrast~ Texas I~    0.004</span><span style='text-decoration: underline;'>26</span><span>         480. ((-94.56302 29.55162, -9~
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>017 Intrast~ Texas I~    0.006</span><span style='text-decoration: underline;'>94</span><span>         773. ((-94.5671 29.5504, -94.~
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>018 Intrast~ Texas I~    0.039</span><span style='text-decoration: underline;'>6</span><span>         </span><span style='text-decoration: underline;'>4</span><span>440. ((-94.57576 29.66976, -9~
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>019 Intrast~ Texas I~    0.014</span><span style='text-decoration: underline;'>4</span><span>         </span><span style='text-decoration: underline;'>1</span><span>801. ((-93.96528 29.93387, -9~
+#&gt; </span><span style='color: #555555;'># ... with 7,344 more rows, and 2 more variables: group </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, region </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

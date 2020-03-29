@@ -34,7 +34,8 @@
 
 <meta property="og:title" content="Get one-set of the bounding box — bbox_lims" />
 
-<meta property="og:description" content="Get one-set of the bounding box" />
+<meta property="og:description" content="Return either the x-axis limits
+or y-axis limits." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,7 +111,8 @@
 
     <div class="ref-description">
     
-    <p>Get one-set of the bounding box</p>
+    <p>Return either the x-axis limits
+or y-axis limits.</p>
     
     </div>
 
@@ -146,12 +148,39 @@
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>states_map</span>)
+
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>st_xlim</span>(<span class='no'>states_map</span>)
+<span class='no'>x</span></div><div class='output co'>#&gt;       xmin       xmax 
+#&gt; -124.68134  -67.00742 
+#&gt; attr(,"class")
+#&gt; [1] "xlim"
+#&gt; attr(,"crs")
+#&gt; Coordinate Reference System:
+#&gt;   User input: EPSG:4326 
+#&gt;   wkt:
+#&gt; GEOGCS["WGS 84",
+#&gt;     DATUM["WGS_1984",
+#&gt;         SPHEROID["WGS 84",6378137,298.257223563,
+#&gt;             AUTHORITY["EPSG","7030"]],
+#&gt;         AUTHORITY["EPSG","6326"]],
+#&gt;     PRIMEM["Greenwich",0,
+#&gt;         AUTHORITY["EPSG","8901"]],
+#&gt;     UNIT["degree",0.0174532925199433,
+#&gt;         AUTHORITY["EPSG","9122"]],
+#&gt;     AUTHORITY["EPSG","4326"]]</div><div class='input'>
+<span class='co'># The crs is preserved</span>
+<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_crs.html'>st_crs</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Coordinate Reference System: NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

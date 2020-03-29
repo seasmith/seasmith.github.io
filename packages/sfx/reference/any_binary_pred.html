@@ -194,12 +194,23 @@ operator.</p></td>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)</div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ngp</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>states_map</span>)
+
+<span class='co'># Works like normal 'sf' binary logical</span>
+<span class='co'># operators, except it returns a vector.</span>
+<span class='no'>i</span> <span class='kw'>&lt;-</span> <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>st_any_intersects</span>(<span class='no'>states_map</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>i</span>)</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

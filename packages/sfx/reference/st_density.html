@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check for minimum and maximum occurences of <code>TRUE</code>
-from a binary logical function. — st_any • sfx</title>
+<title>Compute 2D density — st_density • sfx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -33,13 +32,10 @@ from a binary logical function. — st_any • sfx</title>
 
 
 
-<meta property="og:title" content="Check for minimum and maximum occurences of <code>TRUE</code>
-from a binary logical function. — st_any" />
+<meta property="og:title" content="Compute 2D density — st_density" />
 
-<meta property="og:description" content="Converts a logical matrix into a more manageable logical
-vector.  Each row of the logical matrix must meet the
-min and max TRUE threshold (1 and Inf
-by default, respectively)." />
+<meta property="og:description" content="Choose from methods &quot;kde2d&quot; and &quot;bkde2D&quot;,
+and various return geometries" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,68 +104,97 @@ by default, respectively)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check for minimum and maximum occurences of <code>TRUE</code>
-from a binary logical function.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seasmith/sfx/blob/master/R/st-any.R'><code>R/st-any.R</code></a></small>
-    <div class="hidden name"><code>st_any.Rd</code></div>
+    <h1>Compute 2D density</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seasmith/sfx/blob/master/R/st-density.R'><code>R/st-density.R</code></a></small>
+    <div class="hidden name"><code>st_density.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Converts a logical matrix into a more manageable logical
-vector.  Each row of the logical matrix must meet the
-min and max <code>TRUE</code> threshold (<code>1</code> and <code>Inf</code>
-by default, respectively).</p>
+    <p>Choose from methods <code>"kde2d"</code> and <code>"bkde2D"</code>,
+and various return geometries</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>st_any</span>(<span class='no'>x</span>, <span class='kw'>at_least</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>at_most</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)</pre>
+    <pre class="usage"><span class='fu'>st_density</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>return_geometry</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"kde2d"</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>200</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>range.x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>truncate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
+
+<span class='co'># S3 method for sfc</span>
+<span class='fu'>st_density</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>return_geometry</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"kde2d"</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>range.x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>truncate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
+
+<span class='co'># S3 method for sf</span>
+<span class='fu'>st_density</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>return_geometry</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"kde2d"</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>range.x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>truncate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>(sgbp/matrix) Return object of a simple feature
-binary logical function.</p></td>
+      <td><p>(sf/sfc) Spatial data</p></td>
     </tr>
     <tr>
-      <th>at_least</th>
-      <td><p>(integer) Minimal occurences of <code>TRUE</code>.
-Default is <code>1L</code>.</p></td>
+      <th>return_geometry</th>
+      <td><p>(character) What gets returned?</p></td>
     </tr>
     <tr>
-      <th>at_most</th>
-      <td><p>(integer) Maximum occurences of <code>TRUE</code>.
-Default is <code>Inf</code>.</p></td>
+      <th>method</th>
+      <td><p>(character) How should density be computed?</p></td>
+    </tr>
+    <tr>
+      <th>bw</th>
+      <td><p>(numeric) Binwidth</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>(numeric) Grid size</p></td>
+    </tr>
+    <tr>
+      <th>bins</th>
+      <td><p>(numeric) Number of contour bins</p></td>
+    </tr>
+    <tr>
+      <th>range.x</th>
+      <td><p>(numeric-list) See <code><a href='https://rdrr.io/pkg/KernSmooth/man/bkde2D.html'>KernSmooth::bkde2D</a></code></p></td>
+    </tr>
+    <tr>
+      <th>truncate</th>
+      <td><p>(logical) See <code><a href='https://rdrr.io/pkg/KernSmooth/man/bkde2D.html'>KernSmooth::bkde2D</a></code></p></td>
     </tr>
     </table>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ngp</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>states_map</span>)
-
-<span class='no'>i</span> <span class='kw'>&lt;-</span> <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_binary_pred.html'>st_intersects</a></span>(<span class='no'>states_map</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='input'>
-<span class='no'>i</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>st_any</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'>
-<span class='no'>i</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>st_any</span>(<span class='fl'>3</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>j</span> <span class='kw'>&lt;-</span> <span class='no'>ngp</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='any_binary_pred.html'>st_any_intersects</a></span>(<span class='no'>states_map</span>)</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>j</span>)</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
